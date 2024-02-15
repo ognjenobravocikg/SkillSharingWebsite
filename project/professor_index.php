@@ -15,10 +15,14 @@ session_start();
 </head>
 <body>
 
-	<a href="professor_register/logout.php">Logout</a>
-	<h1>This is the index page</h1>
+	<a href="professor_register/logout.php">Odjavi se</a>
+	<h1>Dobrodošli</h1>
 
 	<br>
-	Hello, <?php echo $user_data['name']; ?>
+	Zdravo, <?php echo $user_data['name']; ?>
+	<br>
+	<br>
+	<a href="settings/professors_settings.php">Podešavanja</a>
+
 </body>
 </html>

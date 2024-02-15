@@ -59,6 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             window.open('chat.php?professor_email=' + professorEmail, '_blank', 'width=600,height=400');
         }
     </script>
+    <br>
+    <a href="settings/users_settings">Podešavanja</a>
+
 
 </body>
 </html>
