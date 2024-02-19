@@ -1,8 +1,8 @@
 <?php 
 session_start();
 
-include("http://localhost/testovi/project/user_register/connection.php");
-include("http://localhost/testovi/project/user_register/functions.php");
+include("../user_register/connection.php");
+include("../user_register/functions.php");
 
 $professor_data = check_login($con);
 

@@ -1,7 +1,7 @@
 <?php 
 session_start();
-include("http://localhost/testovi/project/professor_register/connection.php");
-include("http://localhost/testovi/project/professor_register/functions.php");
+include("../professor_register/connection.php");
+include("../professor_register/functions.php");
 
 $professor_data = check_login($con);
 
