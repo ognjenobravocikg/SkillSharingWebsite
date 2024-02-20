@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if (!empty($first_name) && !empty($last_name) && !empty($email) && !empty($password) && !empty($skill) && !empty($interests) && !empty($education)) {
         $user_id = random_num(20);
-        $query = "INSERT INTO users (name, lastName, email, password, skill, interests, education,user_id) VALUES ('$first_name', '$last_name', '$email', '$password', '$skill', '$interests', '$education','$user_id')";
+        $query = "INSERT INTO users (name, lastName, email, password, skill, interests, education, user_id, registration_date) VALUES ('$first_name', '$last_name', '$email', '$password', '$skill', '$interests', '$education', '$user_id', NOW())";
         if (mysqli_query($con, $query)) {
             header("Location: login.php");
             exit;

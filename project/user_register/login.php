@@ -75,7 +75,7 @@ session_start();
             </div>
             <input class="btn" type="submit" value="Prijavi se"><br>
             <div class="register-link">
-                <p><a href="http://localhost/testovi/project/professor_register/login.php">Prijavi se kao profesor!</a></p><br>
+                <br><p><a href="http://localhost/testovi/project/professor_register/login.php">Prijavi se kao profesor!</a></p><br>
                 <p><a href="signup.php">Nemaš nalog? Registruj se!</a></p>
             </div>
         </form>

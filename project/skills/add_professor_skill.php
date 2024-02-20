@@ -2,16 +2,16 @@
 session_start();
 include("../user_register/connection.php");
 
+// Check if the professor_id exists in the session
 if (isset($_SESSION['professor_id'])) {
-    // Retrieve professor_id from session
     $professor_id = $_SESSION['professor_id'];
 } else {
     header("Location: http://localhost/testovi/project/professor_index.php");
-    die;
+    exit; // Terminate script execution
 }
 
 // Check if the form is submitted
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     // Retrieve form data
     $title = $_POST['title'];
     $skill_description = $_POST['skill_description'];
@@ -24,7 +24,6 @@ if(isset($_POST['submit'])) {
     $image_size = $image['size'];
     $image_error = $image['error'];
 
-
     // Check if file is uploaded without errors
     if ($image_error === 0) {
         // Generate a unique name for the image to avoid conflicts
@@ -35,36 +34,20 @@ if(isset($_POST['submit'])) {
 
         // Move the uploaded file to the destination directory
         if (move_uploaded_file($image_tmp_name, $image_destination)) {
-            // Check if the category already exists
-            $query = "SELECT category_id FROM categories WHERE category_name = ?";
-            $stmt = $con->prepare($query);
-            $stmt->bind_param("s", $category);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $row = $result->fetch_assoc();
-            $category_id = $row ? $row['category_id'] : null;
-            $stmt->close();
-
-            // If category doesn't exist, insert it into the database
-            if (!$category_id) {
-                $insert_query = "INSERT INTO categories (category_name) VALUES (?)";
-                $insert_stmt = $con->prepare($insert_query);
-                $insert_stmt->bind_param("s", $category);
-                $insert_stmt->execute();
-                $category_id = $insert_stmt->insert_id;
-                $insert_stmt->close();
-            }
-
             // Insert skill into the database
-            $insert_skill_query = "INSERT INTO professor_skills (professor_id, title, image, skill_description, category_id) 
+            $insert_skill_query = "INSERT INTO skills (professor_id, title, image, description, category) 
                                    VALUES (?, ?, ?, ?, ?)";
             $insert_stmt = $con->prepare($insert_skill_query);
-            $insert_stmt->bind_param("isssi", $professor_id, $title, $image_new_name, $skill_description, $category_id);
-            
-            if ($insert_stmt->execute()) {
-                echo "Skill added successfully";
+            if ($insert_stmt) {
+                $insert_stmt->bind_param("issss", $professor_id, $title, $image_new_name, $skill_description, $category);
+
+                if ($insert_stmt->execute()) {
+                    echo "Skill added successfully";
+                } else {
+                    echo "Error adding skill: " . $insert_stmt->error;
+                }
             } else {
-                echo "Error adding skill: " . $insert_stmt->error;
+                echo "Error preparing SQL statement: " . $con->error;
             }
 
             $insert_stmt->close();

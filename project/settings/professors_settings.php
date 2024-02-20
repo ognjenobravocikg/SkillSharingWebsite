@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 <body>
 
-    <a href="logout.php">Odjavi se</a>
+    <a href="../professor_register/logout.php">Odjavi se</a>
     <h1>Podešavanja</h1>
 
     <form method="post">
@@ -67,15 +67,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <label for="new_password2">Potvrdi šifru:</label>
         <input type="password" name="new_password2" style="display: none;"><br><br>
 
-        <label for="new_skill">Imas novu veštinu?</label>
-        <input type="text" name="new_skill" style="display: none;"><br><br>
-
         <label for="new_interest">Imaš nova interesovanja?</label>
         <input type="text" name="new_interest" style="display: none;"><br><br>
 
         <button type="button" onclick="showChangeInput('new_name')">Promeni ime</button>
         <button type="button" onclick="showChangeInput('new_password1')">Promeni šifru</button>
-        <button type="button" onclick="showChangeInput('new_skill')">Dodaj veštinu</button>
         <button type="button" onclick="showChangeInput('new_interest')">Dodaj interesovanje</button>
 
         <button type="submit">Sačuvaj promene</button>

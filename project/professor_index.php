@@ -31,7 +31,9 @@ $followers = fetch_professor_followers($con, $professor_id);
     <br>
     <br>
     <a href="settings/professors_settings.php">Podešavanja</a>
-
+    <br><br>
+    <a href="organize_new_class.php">Organizuj novi cas</a>
+    <br><br>
     <!-- Display connection requests -->
     <?php if (!empty($connection_requests)): ?>
         <h2>Connection Requests:</h2>

@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- Search form -->
     <form method="post">
         <label for="search_query">Pretraži:</label>
-        <input type="text" name="search_query" id="search_query" placeholder="Uneti veštinu">
+        <input type="text" name="search_query" id="search_query" placeholder="Uneti ime ili prezime predavaca">
         <button type="submit">Pretraži</button>
     </form>
 
@@ -79,6 +79,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             });
         }
     </script>
+    <br>
+    <a href="user_search_skill.php">Pretrazivanje po vestini</a>
+    <br>
     <br>
     <a href="settings/users_settings">Podešavanja</a>
 </body>
